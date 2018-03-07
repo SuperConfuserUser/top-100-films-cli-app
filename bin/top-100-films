@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require "../lib/top_100_films/"
+require_relative "../lib/top_100_films"
 
 Top100Films::CLI.new.call
