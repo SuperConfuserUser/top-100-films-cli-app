@@ -37,11 +37,10 @@ class Top100Films::CLI
     puts "Top 100 Films:"
     puts "--------------------------------------------------------------------------"
 
-    Top100Films::Film.all.each.with_index(1) do |film,i|
+    Top100Films::Film.all.each do |film|
       puts "#{film.rank}. #{film.title} - #{film.year}"
-    #  menu(i) if i%10
     end
-
+    menu(num)
   end
 
   def menu
@@ -53,8 +52,6 @@ class Top100Films::CLI
 
       if input.to_i.between?(1, Top100Films::Film.all.length)
         film_details(input.to_i)
-    #  elsif input.strip == ""
-    #    list_films(num)
       elsif input.downcase == "list"
         list_films
       elsif input.downcase == "all"
