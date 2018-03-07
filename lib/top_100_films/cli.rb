@@ -34,15 +34,10 @@ class Top100Films::CLI
 
   #list first 10 ond then in increments of 10
   def list_films(start = 0, length = 10)
-<<<<<<< HEAD
-    puts "\n--------------------------------------------------------------------------"
-    puts "Top 100 Films:"
-    puts "--------------------------------------------------------------------------"
-=======
     puts "--------------------------------------------------------------------------"
     puts "#{list_title(start, length)}:"
     puts "--------------------------------------------------------------------------"
->>>>>>> new-cli-features
+
     Top100Films::Film.all[start, length].each do |film|
       puts "#{film.rank}. #{film.title} - #{film.year}"
     end
@@ -54,10 +49,7 @@ class Top100Films::CLI
 
   def menu
     i = 0
-<<<<<<< HEAD
-=======
     list_increment = 10
->>>>>>> new-cli-features
     input = nil
 
     while input != "exit"
@@ -67,11 +59,8 @@ class Top100Films::CLI
       if input.to_i.between?(1, Top100Films::Film.all.length)
         film_details(input.to_i)
       elsif input.strip == ""
-<<<<<<< HEAD
         i += 10
-=======
         i == Top100Films::Film.all.length - list_increment ? i = 0 : i+= list_increment
->>>>>>> new-cli-features
         list_films(i)
       elsif input.downcase == "list"
         list_films(0,Top100Films::Film.all.length)
