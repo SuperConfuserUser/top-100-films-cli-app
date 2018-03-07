@@ -1,5 +1,8 @@
-require "top_100_films/version"
+require 'nokogiri'
+require 'open-uri'
+require 'colorize'
 
-module Top100Films
-  # Your code goes here...
-end
+require_relative "./top_100_films/version"
+require_relative "./top_100_films/cli"
+require_relative "./top_100_films/films"
+require_relative "./top_100_films/scraper"
