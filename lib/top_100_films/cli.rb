@@ -40,7 +40,6 @@ class Top100Films::CLI
     Top100Films::Film.all.each do |film|
       puts "#{film.rank}. #{film.title} - #{film.year}"
     end
-    menu(num)
   end
 
   def menu
