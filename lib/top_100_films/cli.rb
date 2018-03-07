@@ -1,11 +1,11 @@
 class Top100Films::CLI
 
   def call
-    title_screen
+    #title_screen
     create_list
     list_films
     menu
-    credits
+    #credits
   end
 
   def title_screen
@@ -32,6 +32,7 @@ class Top100Films::CLI
     Top100Films::Scraper.new.scrape_empire
   end
 
+  #list first 10 ond then in increments of 10
   def list_films
     puts "\n--------------------------------------------------------------------------"
     puts "Top 100 Films:"
