@@ -16,7 +16,9 @@ class Top100Films::CLI
      / / | (_) | |_) | | | |_| | |_| | / /   | | | | | | | \\__ \\
      \\/   \\___/| .__/  |_|\\___/ \\___/  \\/    |_|_|_| |_| |_|___/  v #{Top100Films::VERSION}
                |_|
+
                LIST - full film list      EXIT - exit
+
                          Press ENTER to start.
     DOC
 
@@ -29,7 +31,7 @@ class Top100Films::CLI
     Top100Films::Scraper.new.scrape_empire
   end
 
-  #list first 10 ond then in increments of 10
+
   def list_films(start = 0, length = 10)
     puts "--------------------------------------------------------------------------"
     puts "#{list_title(start, length)}:"
@@ -78,7 +80,7 @@ class Top100Films::CLI
 
   def film_details(rank)
     film = Top100Films::Film.find_by_rank(rank).test_or_create_details
-    puts "--------------------------------------------------------------------------"
+    puts "\n--------------------------------------------------------------------------"
     puts "Film \##{rank}: #{film.title}"
     puts "--------------------------------------------------------------------------"
     puts "\nDirector: #{film.director.join(', ')}" if film.director
@@ -92,11 +94,14 @@ class Top100Films::CLI
   def credits
     puts <<-DOC
                                   CREDITS
+
                             Chely Ho   Developer
+
                          Patorjk.com   ASCII Art Generator
                              Nokogiri  Gem
                               OpenURI  Gem
                              Colorize  Gem
+
                   with special thanks to Flatiron School
     DOC
   end
