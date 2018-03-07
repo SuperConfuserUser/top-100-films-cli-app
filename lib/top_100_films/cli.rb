@@ -37,6 +37,7 @@ class Top100Films::CLI
     puts "--------------------------------------------------------------------------"
     puts "#{list_title(start, length)}:"
     puts "--------------------------------------------------------------------------"
+
     Top100Films::Film.all[start, length].each do |film|
       puts "#{film.rank}. #{film.title} - #{film.year}"
     end
