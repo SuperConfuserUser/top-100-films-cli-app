@@ -1,11 +1,11 @@
 class Top100Films::CLI
 
   def call
-    #title_screen
+    title_screen
     create_list
-    list_films(10)
+    list_films
     menu
-  #  credits
+    credits
   end
 
   def title_screen
@@ -32,14 +32,14 @@ class Top100Films::CLI
     Top100Films::Scraper.new.scrape_empire
   end
 
-  def list_films(num)
+  def list_films
     puts "\n--------------------------------------------------------------------------"
     puts "Top 100 Films:"
     puts "--------------------------------------------------------------------------"
 
     Top100Films::Film.all.each.with_index(num) do |film,i|
       puts "#{film.rank}. #{film.title} - #{film.year}"
-      menu(i) if i%10
+    #  menu(i) if i%10
     end
 
   end
@@ -53,14 +53,14 @@ class Top100Films::CLI
 
       if input.to_i.between?(1, Top100Films::Film.all.length)
         film_details(input.to_i)
-      elsif input.strip == ""
-        list_films(num)
+    #  elsif input.strip == ""
+    #    list_films(num)
       elsif input.downcase == "list"
         list_films
       elsif input.downcase == "all"
         all_details
       elsif input.downcase == "exit"
-        credits
+        break
       else
         puts "Invalid command. Please try again.".red
       end
