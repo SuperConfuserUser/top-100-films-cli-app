@@ -17,7 +17,7 @@ class Top100Films::CLI
      \\/   \\___/| .__/  |_|\\___/ \\___/  \\/    |_|_|_| |_| |_|___/  v #{Top100Films::VERSION}
                |_|
 
-               LIST - main film list      EXIT - exit
+               LIST - full film list      EXIT - exit
 
 
                          Press ENTER to start.
@@ -34,29 +34,49 @@ class Top100Films::CLI
 
   #list first 10 ond then in increments of 10
   def list_films(start = 0, length = 10)
+<<<<<<< HEAD
     puts "\n--------------------------------------------------------------------------"
     puts "Top 100 Films:"
     puts "--------------------------------------------------------------------------"
+=======
+    puts "--------------------------------------------------------------------------"
+    puts "#{list_title(start, length)}:"
+    puts "--------------------------------------------------------------------------"
+>>>>>>> new-cli-features
     Top100Films::Film.all[start, length].each do |film|
       puts "#{film.rank}. #{film.title} - #{film.year}"
     end
   end
 
+  def list_title(start, length)
+    length == 100 ? "Top 100 Films" : "Films ##{100-start} - ##{100-start-length+1}"
+  end
+
   def menu
     i = 0
+<<<<<<< HEAD
+=======
+    list_increment = 10
+>>>>>>> new-cli-features
     input = nil
 
     while input != "exit"
-      puts "\nEnter the RANK of the film for more details, LIST for more films, or EXIT:"
+      puts "\nENTER for more films, enter <RANK> for film details, LIST for full list, or EXIT:"
       input = gets.strip
 
       if input.to_i.between?(1, Top100Films::Film.all.length)
         film_details(input.to_i)
       elsif input.strip == ""
+<<<<<<< HEAD
         i += 10
+=======
+        i == Top100Films::Film.all.length - list_increment ? i = 0 : i+= list_increment
+>>>>>>> new-cli-features
         list_films(i)
       elsif input.downcase == "list"
-        list_films
+        list_films(0,Top100Films::Film.all.length)
+        #should list restart aftershowing full list or continue where it left off?
+        i = -list_increment
       elsif input.downcase == "all"
         all_details
       elsif input.downcase == "exit"
@@ -73,7 +93,7 @@ class Top100Films::CLI
 
   def film_details(rank)
     film = Top100Films::Film.find_by_rank(rank).test_or_create_details
-    puts "\n--------------------------------------------------------------------------"
+    puts "--------------------------------------------------------------------------"
     puts "Film \##{rank}: #{film.title}"
     puts "--------------------------------------------------------------------------"
     puts "\nDirector: #{film.director.join(', ')}" if film.director
@@ -82,7 +102,6 @@ class Top100Films::CLI
     film.synopsis.each {|synopsis| puts "\n#{synopsis}"}
     puts "\nReview: " + "#{film.review_url}".blue
     puts "Trailer: " + "#{film.trailer}".blue if film.trailer
-    puts "\n--------------------------------------------------------------------------"
   end
 
   def credits
