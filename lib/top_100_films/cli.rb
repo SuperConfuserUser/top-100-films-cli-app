@@ -37,14 +37,14 @@ class Top100Films::CLI
     puts "Top 100 Films:"
     puts "--------------------------------------------------------------------------"
 
-    Top100Films::Film.all.each.with_index(num) do |film,i|
+    Top100Films::Film.all.each.with_index(1) do |film,i|
       puts "#{film.rank}. #{film.title} - #{film.year}"
     #  menu(i) if i%10
     end
 
   end
 
-  def menu(num)
+  def menu
     input = nil
 
     while input != "exit"
