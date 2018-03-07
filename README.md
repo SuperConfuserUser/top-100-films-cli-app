@@ -1,10 +1,16 @@
 # Top100Films
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/top_100_films`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a CLI application that scrapes the Top 100 Films from https://www.empireonline.com/movies/features/best-movies/. It can also display more details about each film from IMDB.
 
 ## Installation
+
+###Method 1:
+
+clone from https://github.com/unenlightened/top-100-films-cli-app
+cd into the project directory
+run `.\bin\top-100-films`
+
+###Method 2:
 
 Add this line to your application's Gemfile:
 
