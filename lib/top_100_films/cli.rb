@@ -1,11 +1,11 @@
 class Top100Films::CLI
 
   def call
-    #title_screen
+    title_screen
     create_list
     list_films
     menu
-    #credits
+    credits
   end
 
   def title_screen
@@ -16,10 +16,7 @@ class Top100Films::CLI
      / / | (_) | |_) | | | |_| | |_| | / /   | | | | | | | \\__ \\
      \\/   \\___/| .__/  |_|\\___/ \\___/  \\/    |_|_|_| |_| |_|___/  v #{Top100Films::VERSION}
                |_|
-
                LIST - full film list      EXIT - exit
-
-
                          Press ENTER to start.
     DOC
 
@@ -59,7 +56,6 @@ class Top100Films::CLI
       if input.to_i.between?(1, Top100Films::Film.all.length)
         film_details(input.to_i)
       elsif input.strip == ""
-        i += 10
         i == Top100Films::Film.all.length - list_increment ? i = 0 : i+= list_increment
         list_films(i)
       elsif input.downcase == "list"
@@ -95,21 +91,13 @@ class Top100Films::CLI
 
   def credits
     puts <<-DOC
-
                                   CREDITS
-
-
                             Chely Ho   Developer
-
                          Patorjk.com   ASCII Art Generator
-
                              Nokogiri  Gem
                               OpenURI  Gem
                              Colorize  Gem
-
-
                   with special thanks to Flatiron School
-
     DOC
   end
 
